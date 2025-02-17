@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Kalkulator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Kalkulator</h1>
+    </header>
+    <main>
+    <div id="kalkulator">
+        <div id="display">
+            <input type="text" id="screen"  disabled>
+        </div>
+        <div id="controls">
+            <div class="buttons function" value="/" onclick="liczby(event)">/</div>
+            <div class="buttons functionx" value="%" onclick="liczby(event)">%</div>
+            <div class="buttons functionx" value="+/-" onclick="liczby(event)">+/-</div>
+            <div class="buttons functionx" value="AC" onclick="liczby(event)">AC</div>
+
+            <div class="buttons function" value="*" onclick="liczby(event)">*</div>
+            <div class="buttons" value="9" onclick="liczby(event)">9</div>
+            <div class="buttons" value="8" onclick="liczby(event)">8</div>
+            <div class="buttons" value="7" onclick="liczby(event)">7</div>
+
+            <div class="buttons function" value="-" onclick="liczby(event)">-</div>
+            <div class="buttons" value="6" onclick="liczby(event)">6</div>
+            <div class="buttons" value="5" onclick="liczby(event)">5</div>
+            <div class="buttons" value="4" onclick="liczby(event)">4</div>
+
+            <div class="buttons function" value="+" onclick="liczby(event)">+</div>
+            <div class="buttons" value="3" onclick="liczby(event)">3</div>
+            <div class="buttons" value="2" onclick="liczby(event)">2</div>
+            <div class="buttons" value="1" onclick="liczby(event)">1</div>
+
+            <div class="buttons function" value="=" onclick="liczby(event)">=</div>
+            <div class="buttons" value="0" onclick="liczby(event)">0</div>
+            <div class="buttons" value="." onclick="liczby(event)">.</div>
+            <div class="buttons" value="like" onclick="liczby(event)">👍</div>
+            
+    </div>
+</main>
+<footer>Made by Kamil Jamiołkowski</footer>
+</body>
+
+<script>
+    var pierwsza_liczba = 0;
+    var druga_liczba = 0;
+    var znak = "";
+    function liczby(event){
+        var screen = document.getElementById("screen");
+        var wartosc_guzika = event.target.innerText;
+        
+        
+        if(wartosc_guzika == "AC"){
+            screen.value = "";
+            wartosc_guzika = "";
+            document.getElementById("screen").style.fontSize = "50px";
+            pierwsza_liczba = 0;
+            druga_liczba = 0;
+        }
+
+        if(wartosc_guzika == "👍"){
+            screen.value = "Thanks";
+            wartosc_guzika = "";
+            setTimeout(() => {
+                screen.value = "";
+            },1000);
+            pierwsza_liczba = 0;
+            druga_liczba = 0;
+            document.getElementById("screen").style.fontSize = "50px";
+            
+        }
+        
+        if(wartosc_guzika == "+/-"){
+            wartosc_guzika = "";
+            screen.value = screen.value * -1;
+            wartosc_guzika = "";
+            console.log(pierwsza_liczba);
+        }
+
+        if(wartosc_guzika == "+"){
+            pierwsza_liczba = screen.value;
+            screen.value = "";
+            znak = "+";
+            wartosc_guzika = "";
+            console.log(pierwsza_liczba);
+        }
+
+        if(wartosc_guzika == "-"){
+            pierwsza_liczba = screen.value;
+            screen.value = "";
+            znak = "-";
+            wartosc_guzika = "";
+            console.log(pierwsza_liczba);
+        }
+        if(wartosc_guzika == "*"){
+            pierwsza_liczba = screen.value;
+            screen.value = "";
+            znak = "*";
+            wartosc_guzika = "";
+            console.log(pierwsza_liczba);
+        }
+
+        if(wartosc_guzika == "/"){
+            pierwsza_liczba = screen.value;
+            screen.value = "";
+            znak = "/";
+            wartosc_guzika = "";
+            console.log(pierwsza_liczba);
+        }
+        
+        
+        if(wartosc_guzika == "%"){
+            pierwsza_liczba = screen.value;
+            screen.value = screen.value / 100;
+            
+            
+        }
+
+        
+
+        if(wartosc_guzika == "="){
+            druga_liczba = screen.value;
+            if(znak == "+"){
+                screen.value = parseFloat(pierwsza_liczba) + parseFloat(druga_liczba);
+            }
+            if(znak == "-"){
+                screen.value = parseFloat(pierwsza_liczba) - parseFloat(druga_liczba);
+            }
+            if(znak == "*"){
+                screen.value = parseFloat(pierwsza_liczba) * parseFloat(druga_liczba);
+            }
+            if(znak == "/"){
+                screen.value = parseFloat(pierwsza_liczba) / parseFloat(druga_liczba);
+            }
+            wartosc_guzika = "";
+        }
+        wartosc_guzika = screen.value + wartosc_guzika;
+        
+        
+        if(wartosc_guzika.length > 8){
+            document.getElementById("screen").style.fontSize = "20px";
+
+        }
+
+        
+
+        screen.value = wartosc_guzika
+
+        
+        
+
+        
+
+        
+    }
+</script>
+
+</html>

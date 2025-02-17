@@ -1,2 +1,1 @@
-# Kalkulator
- Kalkulator
+https://github.com/MrLyrical789/Kalkulator
