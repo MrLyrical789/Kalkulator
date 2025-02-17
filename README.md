@@ -1,1 +1,1 @@
-https://github.com/MrLyrical789/Kalkulator
+https://mrlyrical789.github.io/Kalkulator/
